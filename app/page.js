@@ -1,95 +1,58 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import styles from '@/app/styles/styles.module.css';
 
 export default function Home() {
+  const [linkedinClicked, setLinkedinClicked] = useState(false);
+
+  const handleClick = () => {
+    setLinkedinClicked(true);
+    window.location.href = 'https://www.linkedin.com/in/ejeyaraj/';
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className = 'container'>
+      <div>
+        <h1 className = 'title'>All About Me: Edlyn Jeyaraj</h1>
+        <h2 className = 'subtitle'>Education</h2>
+        <p className = 'paragraph'>University of North Carolina Chapel Hill</p>
+        <p className = 'paragraph'>Business B.S.B.A., Pre-Computer Science B.A.</p>
+        <p className = 'paragraph'>2022 - 2026</p>
+      </div>
+
+      <div className = 'flex-container3'>
+        <div className = 'flex-item'>
+          <Image src='/image.jpeg' width={300} height={500}/>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      
+      
+      <h2 className = 'subtitle'>What Do I Like to Do?</h2>
+      <div className='flex-container1'>
+        <Link href='https://www.maxpreps.com/nc/cary/panther-creek-catamounts/athletes/edlyn-jeyaraj/?careerid=956irnmmovt55'>
+            <Image src='/tennis.jpeg' width={200} height={300} className='small-image' />
+        </Link>
+        <Link href='https://www.icloud.com/notes/00WPk99S1Uv2mdTYDC6ZBJ6oA'>
+            <Image src='/kdrama.jpg' width={200} height={100} className='small-image' />
+        </Link>
+        <Link href='https://www.keshimusic.com/#/'>
+            <Image src='/keshi.jpg' width={200} height={200} className='small-image' />
+        </Link>
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='flex-container2'>
+        <div className='flex-item'>Play tennis</div>
+        <div className='flex-item'>Watch too many Korean dramas</div>
+        <div className='flex-item'>Listen to Keshi</div>
       </div>
-    </main>
-  )
+
+      <button onClick={handleClick} className='button'>
+        Click Here for my LinkedIn
+      </button>
+      {linkedinClicked && <p>You clicked the LinkedIn button!</p>}
+    </div>
+  );
 }
+
